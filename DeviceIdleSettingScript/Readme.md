@@ -1,7 +1,7 @@
 ### Android Device System Idle Setting Script
 - (DeviceidleSettingScript.sh)
 ***
-为Rooted Android设备提供基于termux/Android Shell的自更改式脚本写入dumpsys deviceidel whitelist参数更改电池优化名单  
+为Rooted Android设备提供基于termux/Android Shell的自更改式脚本  用于写入dumpsys deviceidel whitelist参数更改电池优化名单  
 ```bash
 Usage:
    ./DeviceidleSettingScript.sh --Option <package>
