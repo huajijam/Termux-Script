@@ -6,3 +6,4 @@
 - File Secure Owner Setting Script
 - Git File Secure Reset Script
 - Batter Optimization Whitelist Tweaking Script
+- Device Idle Setting Script
