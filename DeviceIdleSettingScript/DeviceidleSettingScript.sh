@@ -11,7 +11,7 @@ packages=(${packages_add[*]} ${packages_del[*]})
 Option=$1
 PKG=$2
 isdelete=0
-version="Script V1.2 --by huajijam@gmail.com"
+version="Script V1.4 --by huajijam@gmail.com"
 
 # sub-Program
 help(){
@@ -97,11 +97,22 @@ fi
 }
 
 list(){
-printf "there are ${#packages[*]} packages has been added in the script:"
-for i in "${!packages[@]}";do
-  printf "%s\t%s\n""$i. ""${packages[$i]}"
-done
-unset i
+printf "there are ${#packages[*]} packages has been config in the script:\n"
+if [[ -n "${packages_add}" ]];then
+  printf "\n${#packages_add[*]} packages has been config in add:"
+  for i in "${!packages_add[@]}";do
+    printf "%s\t%s\n""$i. ""${packages_add[$i]}"
+  done
+  unset i
+fi
+echo -e
+if [[ -n "${packages_del}" ]];then
+  printf "\n${#packages_del[*]} packages has been config in remove:"
+  for i in "${!packages_del[@]}";do
+    printf "%s\t%s\n""$i. ""${packages_del[$i]}"
+  done
+  unset i
+fi
 echo -e
 }
 
