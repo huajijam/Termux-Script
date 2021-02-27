@@ -11,7 +11,7 @@ packages=(${packages_add[*]} ${packages_del[*]})
 Option=$1
 PKG=$2
 isdelete=0
-version="Script V1.1 --by huajijam@gmail.com"
+version="Script V1.2 --by huajijam@gmail.com"
 
 # sub-Program
 help(){
@@ -106,7 +106,7 @@ echo -e
 }
 
 getall(){
-su -c dumpsys deviceidel whitelist
+su -c dumpsys deviceidle whitelist
 }
 
 run(){
@@ -114,36 +114,36 @@ echo -e "Running Script Configs"
 # if add and delete exist
 if [[ -n ${packages_add[*]} && -n ${packages_del[*]} ]];then
   for i in ${packages_add[*]};do
-    su -c dumpsys deviceidel whitelist +$i
+    su -c dumpsys deviceidle whitelist +$i
   done
   unset i
 # must repeat and split to twice
   for i in ${packages_del[*]};do
-    su -c dumpsys deviceidel whitelist -$i
+    su -c dumpsys deviceidle whitelist -$i
   done
   unset i
 fi
 # if Only exist add
 if [[ -n ${packages_add[*]} && -z ${packages_del[*]} ]];then
   for i in ${packages_add[*]};do
-    su -c dumpsys deviceidel whitelist +$i
+    su -c dumpsys deviceidle whitelist +$i
   done
   unset i
 fi
 # if Only exist delete
 if [[ -z ${packages_add[*]} && -n ${packages_del[*]} ]];then
   for i in ${packages_del[*]};do
-    su -c dumpsys deviceidel whitelist -$i
+    su -c dumpsys deviceidle whitelist -$i
   done
   unset i
 fi
 # because Script process cannot get update in the process cache
 if [[ $stats = add ]];then
-  su -c dumpsys deviceidel whitelist +$PKG
+  su -c dumpsys deviceidle whitelist +$PKG
   unset stats
 fi
 if [[ $stats = remove ]];then
-  su -c dumpsys deviceidel whitelist -$PKG
+  su -c dumpsys deviceidle whitelist -$PKG
   unset stats
 fi
 echo -e "Running Config Succeed"
@@ -151,7 +151,7 @@ echo -e "Running Config Succeed"
 
 runonly(){
 echo -e "Running Config "$2""
-su -c dumpsys deviceidel whitelist $2
+su -c dumpsys deviceidle whitelist $2
 echo -e "Running Config Succeed"
 }
 # sub-Program
