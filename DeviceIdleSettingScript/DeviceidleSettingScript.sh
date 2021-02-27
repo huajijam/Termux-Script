@@ -11,7 +11,7 @@ packages=(${packages_add[*]} ${packages_del[*]})
 Option=$1
 PKG=$2
 isdelete=0
-version="Script V1.4 --by huajijam@gmail.com"
+version="Script V1.5 --by huajijam@gmail.com"
 
 # sub-Program
 help(){
@@ -97,23 +97,23 @@ fi
 }
 
 list(){
-printf "there are ${#packages[*]} packages has been config in the script:\n"
+printf "there are ${#packages[*]} packages has been configed in the script:\n"
 if [[ -n "${packages_add}" ]];then
-  printf "\n${#packages_add[*]} packages has been config in add:"
-  for i in "${!packages_add[@]}";do
+  printf "\n${#packages_add[@]} packages has been configed in add:"
+  for i in "${!packages_add[*]}";do
     printf "%s\t%s\n""$i. ""${packages_add[$i]}"
   done
   unset i
+  echo -e
 fi
-echo -e
 if [[ -n "${packages_del}" ]];then
-  printf "\n${#packages_del[*]} packages has been config in remove:"
-  for i in "${!packages_del[@]}";do
+  printf "\n${#packages_del[@]} packages has been configed in remove:"
+  for i in "${!packages_del[*]}";do
     printf "%s\t%s\n""$i. ""${packages_del[$i]}"
   done
   unset i
+  echo -e
 fi
-echo -e
 }
 
 getall(){
@@ -167,7 +167,7 @@ echo -e "Running Config Succeed"
 }
 # sub-Program
 # Execute Program
-if [[ -x $(command -v "su") ]];then # Check if su exist
+if [[ -n $(command -v su) ]];then # Check if su exist
   if [[ -z "${1:-}" ]];then
   run
   elif [[ "${1:-}" = "-add" ]] && [[ -n "$2" ]];then
@@ -193,17 +193,18 @@ if [[ -x $(command -v "su") ]];then # Check if su exist
     remove
   elif [[ "${1:-}" = "--version" ]];then
       echo $version
-  elif [[ "${1:-}" = "-h" || "${1:-}" = "-help" || "${1:-}" = "-HELP" || "${1:-}" = "--help" || "${1:-}" = "--HELP" ]];then
+  elif [[ "${1:-}" = -[Hh][Ee][Ll][Pp] || "${1:-}" = --[Hh][Ee][Ll][Pp] || "${1:-}" = -[Hh] ]];then
     help
   else
     printf "Wrong Options: $0 $Option $PKG"
     help
   fi
 else
-  echo -e "Cannot find Android su Command"
+  echo -e "Cannot find Android su Command,exiting...."
 fi
 unset Option
 unset PKG
 unset pline
 unset delproc
 exit
+xit
