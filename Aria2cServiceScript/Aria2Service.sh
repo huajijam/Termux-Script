@@ -1,10 +1,10 @@
-#config file pos
+#aria2 config file position
 aria2_conf=/data/data/com.termux/files/home/.aria2/aria2.conf
 
 TRACKER=$(
-                curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://trackerslist.com/best_aria2.txt ||
-                curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best_aria2.txt ||
-                curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://trackers.p3terx.com/all_aria2.txt
+    curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://trackerslist.com/best_aria2.txt ||
+    curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best_aria2.txt ||
+    curl -fsSL --connect-timeout 3 --max-time 3 --retry 2 https://trackers.p3terx.com/all_aria2.txt
 )
 
 check_pid() 
