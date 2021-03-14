@@ -207,4 +207,3 @@ unset PKG
 unset pline
 unset delproc
 exit
-xit
